@@ -1,0 +1,15 @@
+{
+  "name": "jenkins-trigger-build-proxy",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Proxy server for triggering jenkins build",
+  "main": "proxy.js",
+  "author": "Taher N Dhilawala",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "body-parser": "~1.0.1",
+    "request": "2.67.0",
+    "async": "1.5.0"
+  }
+}
