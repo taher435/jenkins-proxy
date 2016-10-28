@@ -10,7 +10,15 @@ app.use(bodyParser.json());
 app.post("/trigger-build", function(req, res){
   var query = req.query;
   var project = query.project;
-  var triggerUrl = config.jenkins_url + "/job/" + project + "/build?token=" + config.token;
+  var buildToken = query.token;
+
+  if(!project || project === "" || !buildToken || buildToken === ""){
+    res.status(400)
+    res.send("Bad Request. Project and/or Build Token missing in request parameters.");
+    return;
+  }
+
+  var triggerUrl = config.jenkins_url + "/job/" + project + "/build?token=" + buildToken;
 
   var auth = "Basic " + new Buffer(config.user + ":" + config.password).toString("base64");
 
